@@ -63,9 +63,28 @@ void reiniciaLizarLista(LISTA* l) {
 }
 
 int main() {
-  LISTA* lista;
+  LISTA lista;
+  inicializarLista(&lista);
 
-  inicializarLista(lista);
-  printf("%i\n", tamanho(lista));
+  printf("Tamanho inicial da lista: %i\n", tamanho(&lista));
+
+  REGISTRO reg1 = {10};
+  REGISTRO reg2 = {20};
+  inserirElemLista(&lista, reg1, 0);
+  inserirElemLista(&lista, reg2, 1);
+
+  exibirLista(&lista);
+
+  int pos = buscaSequencial(&lista, 20);
+  printf("Posição do elemento 20: %i\n", pos);
+
+  if (excluirElemLista(10, &lista)) printf("Elemento 10 excluído com sucesso.\n");
+  else printf("Elemento 10 não encontrado.\n");
+
+  exibirLista(&lista);
+
+  reiniciaLizarLista(&lista);
+  printf("Tamanho após reinicializar: %i\n", tamanho(&lista));
+
   return 0;
 }
